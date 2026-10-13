@@ -701,7 +701,7 @@ for(const n of ['Nancy','Viraj','Kashie','Alaric','Fluffy','Mctominay']){const p
 const AV=n=>$(`#stage .av[data-n="${n}"]`);
 function jumpEl(a){a.classList.remove('jump');void a.offsetWidth;a.classList.add('jump');setTimeout(()=>a.classList.remove('jump'),1400)}
 function jump(n,delay=0){setTimeout(()=>jumpEl(AV(n)),delay)}
-function sayEl(el,txt,delay=0,dur=1400){setTimeout(()=>{const b=el.querySelector('.bubble');b.textContent=txt;b.classList.add('on');el.classList.add('talk');bell(88,now0(),.035);setTimeout(()=>{b.classList.remove('on');el.classList.remove('talk')},dur)},delay)}
+function sayEl(el,txt,delay=0,dur=1400){setTimeout(()=>{if(!el)return;const b=el.querySelector('.bubble');b.textContent=txt;b.classList.add('on');el.classList.remove('cheer','dance','hold');el.classList.add('talk','wave');jumpEl(el);bell(88,now0(),.035);setTimeout(()=>{b.classList.remove('on');el.classList.remove('talk','wave')},dur)},delay)}
 function say(n,txt,delay,dur){sayEl(AV(n),txt,delay,dur)}
 function chat(lines,start=0,gap=1550){lines.forEach(([n,t],i)=>say(n,t,start+i*gap));return start+lines.length*gap}
 const ALL=['Viraj','Nancy','Alaric','Mctominay','Fluffy','Kashie'];
@@ -831,19 +831,15 @@ async function openGift(){if(opened)return;opened=true;ensureAudio();setTimeout(
 $('#openBtn').onclick=openGift;$('#gift').onclick=openGift;
 
 /* PARTY STEPS – little conversations */
-function friendsIn(){['Viraj','Nancy','Alaric','Fluffy','Kashie','Mctominay'].forEach((n,i)=>setTimeout(()=>{const a=AV(n);a.classList.add('in');popSound();bell(76+i*2,now0(),.08);if(n!=='Mctominay'){a.classList.add('wave');setTimeout(()=>a.classList.remove('wave'),2600)}},i*420));
-  setTimeout(()=>{const r=AV('Mctominay').getBoundingClientRect();confetti(r.left+r.width/2,r.top+10,70,.6,['#ffd166','#fff','#9ec4e0']);jump('Mctominay')},2400);
-  chat([['Viraj','SURPRISE!! 🎉'],['Mctominay','Wait… you guys?! 😳'],['Nancy','Hiii! 👋'],['Alaric','Happy birthdayyy 🥳'],['Fluffy','You look amazing ✨'],['Kashie','This party is yours 💖'],['Mctominay','Awww guys 🥹']],2800);
-  setTimeout(()=>{const gang=['Viraj','Nancy','Alaric','Fluffy','Kashie'];let k=0;setInterval(()=>{if(!$('#party').classList.contains('show'))return;gang.forEach(n=>{const a=AV(n);if(!a)return;a.classList.remove('wave','hold')});const a=AV(gang[k%gang.length]);if(a)a.classList.add(k%2?'hold':'wave');k++},1600)},3400)}
+function friendsIn(){['Viraj','Nancy','Alaric','Fluffy','Kashie','Mctominay'].forEach((n,i)=>setTimeout(()=>{const a=AV(n);a.classList.add('in');popSound();bell(76+i*2,now0(),.08)},i*420));
+  setTimeout(()=>{const r=AV('Mctominay').getBoundingClientRect();confetti(r.left+r.width/2,r.top+10,70,.6,['#ffd166','#fff','#9ec4e0'])},2400);
+  chat([['Viraj','SURPRISE!! 🎉'],['Mctominay','Wait… you guys?! 😳'],['Nancy','Hiii! 👋'],['Alaric','Happy birthdayyy 🥳'],['Fluffy','You look amazing ✨'],['Kashie','This party is yours 💖'],['Mctominay','Awww guys 🥹']],2800)}
 function cakeIn(){cw.classList.add('show');
   chat([['Nancy','Ooh CAKE!! 😍'],['Viraj','Make a wish, Mctominay ✨'],['Fluffy',"Don't tell us though 🤫"],['Alaric','That cake looks huge 🎂'],['Mctominay','Okay okay 🙈']],1200)}
-function partyDance(ms=5000){const l=[...document.querySelectorAll('#stage .av')];l.forEach((a,i)=>setTimeout(()=>a.classList.add('dance'),i*120));setTimeout(()=>l.forEach(a=>a.classList.remove('dance')),ms)}
 function blowOut(){cw.classList.add('out');chime([72,76,79,84,88]);
-  ALL.forEach((n,i)=>{AV(n).classList.add('cheer');jump(n,i*100)});
-  setTimeout(()=>{ALL.forEach(n=>AV(n).classList.remove('cheer'));partyDance(5500)},2800);
   setTimeout(()=>{const r=cw.getBoundingClientRect();confetti(r.left+r.width/2,r.top+40,170);rain(110)},500);
   chat([['Viraj','HBD MCTOMINAY!! 🎉'],['Kashie','Yayyy 🥳'],['Mctominay','Thank youuu 🥹'],['Alaric','What did you wish for? 👀'],['Nancy','Best birthday ever! 💖']],700)}
-function cutCake(){cw.classList.add('cutting');AV('Mctominay').classList.add('cheer');setTimeout(()=>{cw.classList.add('cut');chime([79,84]);const r=cw.getBoundingClientRect();confetti(r.left+r.width/2,r.top+r.height/2,90,.8);jump('Mctominay');AV('Mctominay').classList.remove('cheer')},1000);
+function cutCake(){cw.classList.add('cutting');setTimeout(()=>{cw.classList.add('cut');chime([79,84]);const r=cw.getBoundingClientRect();confetti(r.left+r.width/2,r.top+r.height/2,90,.8)},1000);
   chat([['Fluffy','Cake time 😋'],['Kashie','Biggest slice for Mctominay! 🍰'],['Viraj','Save me one!! 😭'],['Alaric','I called the corner 😎'],['Mctominay','Nope, all mine 😝']],1500)}
 const steps=[
   ['Turn on the lights 💡',()=>{document.body.classList.add('lit');chime([72,76,79])},"Ahh, much better ✨ Now let's set the mood…",1500],
@@ -1193,18 +1189,13 @@ $('#finalBtn').onclick=async()=>{show('final');stopBalloons(true);
   await skyWrite(textPts('BIRTHDAY',cy),cy);
   await skyWrite(textPts(NAME.toUpperCase(),cy),cy);
   $('#finalContent').style.opacity=1;$('#nm').innerHTML=Array.from(NAME).map((c,i)=>`<span style="animation-delay:${.4+i*.12}s,${1.3+i*.12}s">${c}</span>`).join('');chime([72,76,79,84]);rain(160);startBalloons();
-  const fs=$('#fSquad');ALL.forEach((n,i)=>{const a=makeAv(n,n===NAME?{big:1,tag:'🎂'}:{});fs.appendChild(a);setTimeout(()=>{a.classList.add('in','cheer');jumpEl(a)},1200+i*180)});
+  const fs=$('#fSquad');ALL.forEach((n,i)=>{const a=makeAv(n,n===NAME?{big:1,tag:'🎂'}:{});fs.appendChild(a);setTimeout(()=>a.classList.add('in'),1200+i*180)});
   const FS=n=>fs.querySelector(`.av[data-n="${n}"]`);
   [['Viraj',`Happy birthday, ${NAME}! 🎉`],['Nancy','Best year ever! 🥳'],['Alaric',"You're the best! ⭐"],['Fluffy','Love this party! 💖'],['Kashie','More cake please 🍰'],['Mctominay','Thank you guys!! 🥹']].forEach(([n,t],i)=>sayEl(FS(n),t,2400+i*1500,1600));
   setTimeout(()=>$('#finalSub').classList.add('in'),2600);
   setTimeout(()=>$('#replay').classList.remove('hide'),4000);
-  setInterval(()=>{const a=pick([...fs.children]);a.classList.toggle('cheer');jumpEl(a)},900);
   fire();setInterval(()=>{fire();if(Math.random()<.4)setTimeout(fire,250)},900)};
 $('#replay').onclick=()=>location.reload();
-
-/* idle life: random jumps and waves while the party is on screen */
-setInterval(()=>{const l=[...document.querySelectorAll('#stage .av.in')];if(!l.length||!$('#party').classList.contains('show'))return;
-  const a=pick(l);if(Math.random()<.5)jumpEl(a);else{a.classList.add('wave');setTimeout(()=>a.classList.remove('wave'),1800)}},2400);
 </script>
 
 </body></html>
