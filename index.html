@@ -194,11 +194,13 @@ body.lit .bulb{background:var(--c);box-shadow:0 0 10px 3px var(--c),0 0 26px 6px
 .balloon::after{content:'';position:absolute;top:calc(100% + 1px);left:50%;width:1px;height:75px;background:rgba(255,255,255,.4)}
 @keyframes rise{from{transform:translate(0,0) scale(var(--s)) rotate(-4deg)}50%{transform:translate(calc(var(--sway) * -.5),-65vh) scale(var(--s)) rotate(5deg)}to{transform:translate(var(--sway),-140vh) scale(var(--s)) rotate(-3deg)}}
 
-/* ===== MEMORIES – movie night TV ===== */
-#memories .sub{margin:4px 0 14px;font-size:15px}
+/* ===== MEMORIES – birthday reel ===== */
+#memories{justify-content:flex-start;padding-top:18px}
+#memories .title{text-shadow:0 0 18px rgba(255,95,162,.45)}
+#memories .sub{margin:4px 0 12px;font-size:15px;max-width:340px}
 .mroom{position:relative;flex:none;width:min(90vw,420px);display:flex;flex-direction:column;align-items:center}
-.mroom::before{content:'';position:absolute;left:50%;top:-6%;width:150%;height:110%;transform:translateX(-50%);background:radial-gradient(ellipse at 50% 32%,rgba(150,195,255,.22),transparent 62%);pointer-events:none}
-.tv{position:relative;width:100%;padding:10px 10px 18px;border-radius:14px;background:linear-gradient(#2c2936,#17151e);box-shadow:0 0 0 1px rgba(255,255,255,.08),0 18px 40px rgba(0,0,0,.55)}
+.mroom::before{content:'';position:absolute;left:50%;top:-6%;width:150%;height:110%;transform:translateX(-50%);background:radial-gradient(ellipse at 50% 32%,rgba(255,95,162,.28),transparent 62%);pointer-events:none}
+.tv{position:relative;width:100%;padding:10px 10px 18px;border-radius:18px;background:linear-gradient(160deg,#ff8ec4,#9b5de5 55%,#ffd166);box-shadow:0 0 0 1px rgba(255,255,255,.2),0 18px 40px rgba(155,40,100,.45)}
 .tvScreen{position:relative;width:100%;aspect-ratio:16/10;border-radius:6px;overflow:hidden;background:#05040a;cursor:pointer}
 .tvScreen.boot{animation:tvOn 1s ease-out}
 @keyframes tvOn{0%{transform:scale(.6,.01);filter:brightness(4)}45%{transform:scale(1,.02);filter:brightness(3)}100%{transform:none;filter:none}}
@@ -210,23 +212,23 @@ body.lit .bulb{background:var(--c);box-shadow:0 0 10px 3px var(--c),0 0 26px 6px
 .tvFrame::after{content:'';position:absolute;inset:0;background:linear-gradient(110deg,transparent 10%,rgba(255,255,255,.11) 35%,transparent 58%);opacity:.5;animation:filmShine 5.5s ease-in-out infinite}
 @keyframes framePulse{from{filter:brightness(.85)}to{filter:brightness(1.18)}}
 @keyframes filmShine{0%,20%{transform:translateX(-110%);opacity:0}55%{opacity:.5}85%,100%{transform:translateX(110%);opacity:0}}
-.tvCap{position:absolute;left:0;right:0;bottom:0;z-index:3;padding:22px 12px 8px;background:linear-gradient(transparent,rgba(0,0,0,.72));font:700 22px 'Caveat',cursive;color:#fff;text-align:center;transition:opacity .4s}
+.tvCap{position:absolute;left:8px;right:8px;bottom:6px;z-index:3;padding:16px 10px 6px;background:linear-gradient(transparent,rgba(40,8,28,.82));font:700 clamp(16px,4.6vw,22px)/1.15 'Caveat',cursive;color:#fff;text-align:center;transition:opacity .4s;max-height:3.4em;overflow:hidden}
 .tvTag{position:absolute;top:8px;left:10px;z-index:3;font:700 10px 'Poppins',sans-serif;letter-spacing:1px;color:#fff;background:rgba(0,0,0,.45);padding:3px 8px;border-radius:10px}
 .tvTag i{display:inline-block;width:6px;height:6px;border-radius:50%;background:#ff4d6d;margin-right:5px;vertical-align:1px;animation:tw 1.2s infinite}
 .tvTag.paused i{background:#ffd166;animation:none}
 .tvNo{position:absolute;top:8px;right:10px;z-index:3;font:700 10px 'Courier New',monospace;letter-spacing:1px;color:#fff;background:rgba(0,0,0,.45);padding:3px 8px;border-radius:10px}
 .tvGlare{position:absolute;inset:0;z-index:4;background:linear-gradient(125deg,rgba(255,255,255,.08),transparent 40%),repeating-linear-gradient(0deg,rgba(255,255,255,.018) 0 1px,transparent 1px 4px);pointer-events:none}
-.tvLed{position:absolute;bottom:6px;left:50%;width:5px;height:5px;margin-left:-2.5px;border-radius:50%;background:#4ade80;box-shadow:0 0 6px #4ade80}
-.tvStand{width:24%;height:14px;background:linear-gradient(#2c2936,#15131b);clip-path:polygon(32% 0,68% 0,100% 100%,0 100%)}
+.tvLed{position:absolute;bottom:6px;left:50%;width:5px;height:5px;margin-left:-2.5px;border-radius:50%;background:#ffd166;box-shadow:0 0 6px #ffd166}
+.tvStand{width:24%;height:14px;background:linear-gradient(#ff8ec4,#7a3fc0);clip-path:polygon(32% 0,68% 0,100% 100%,0 100%)}
 .couch{position:relative;z-index:2;width:100%;aspect-ratio:420/118;margin-top:72px}
 .viewer{position:absolute;bottom:26%;width:20%;z-index:1}
 .viewer svg{display:block;width:100%;height:auto;overflow:visible;transform-origin:50% 100%;animation:idle 3s ease-in-out infinite}
 .viewer:nth-child(2n) svg{animation-delay:-1.4s}
 .viewer.bob svg{animation:hop .4s ease-out 2}
-.viewer .bubble{bottom:calc(100% + 4px);width:max-content;max-width:min(40vw,170px);white-space:normal;line-height:1.25;font-size:11.5px;z-index:12}
-.couchBack{position:absolute;left:5%;right:5%;bottom:0;height:52%;border-radius:22px 22px 10px 10px;background:linear-gradient(#8a5bb8,#5e3787);box-shadow:inset 0 4px 0 rgba(255,255,255,.12),0 10px 24px rgba(0,0,0,.45);z-index:2}
+.viewer .bubble{bottom:calc(100% + 4px);width:max-content;max-width:min(28vw,120px);white-space:normal;line-height:1.2;font-size:10.5px;z-index:12}
+.couchBack{position:absolute;left:5%;right:5%;bottom:0;height:52%;border-radius:22px 22px 10px 10px;background:linear-gradient(#ff7eb3,#9b5de5);box-shadow:inset 0 4px 0 rgba(255,255,255,.18),0 10px 24px rgba(0,0,0,.45);z-index:2}
 .couchBack::before{content:'';position:absolute;inset:14% 10% 20%;background:linear-gradient(90deg,transparent 33%,rgba(0,0,0,.18) 33% calc(33% + 2px),transparent calc(33% + 2px) 66%,rgba(0,0,0,.18) 66% calc(66% + 2px),transparent calc(66% + 2px))}
-.couchArm{position:absolute;bottom:0;width:11%;height:40%;border-radius:14px 14px 8px 8px;background:linear-gradient(#7a4ea6,#50307a);z-index:3;box-shadow:0 8px 16px rgba(0,0,0,.35)}
+.couchArm{position:absolute;bottom:0;width:11%;height:40%;border-radius:14px 14px 8px 8px;background:linear-gradient(#ff9ec8,#6d38b0);z-index:3;box-shadow:0 8px 16px rgba(0,0,0,.35)}
 .couchArm.l{left:0}.couchArm.r{right:0}
 .remote{display:flex;gap:12px;margin:14px 0 16px}
 .rBtn{width:44px;height:44px;border-radius:50%;border:1px solid rgba(255,255,255,.22);background:rgba(255,255,255,.08);color:#fff;font-size:18px;cursor:pointer;transition:transform .15s,background .2s}
@@ -489,14 +491,14 @@ textarea.bad{border-color:#ff4d6d;animation:shk .4s}
 </section>
 
 <section id="memories" class="screen">
-  <h2 class="title">Movie night 🍿</h2>
-  <p class="sub">Our best moments, now playing on the big screen 📺</p>
+  <h2 class="title">Birthday memories 🎂</h2>
+  <p class="sub">The moments we saved, just for your day ✨</p>
   <div class="mroom">
     <div class="tv">
       <div class="tvScreen" id="tvScreen">
         <img class="tvImg" id="tvA" alt=""><img class="tvImg" id="tvB" alt="">
         <div class="tvFrame"></div>
-        <div class="tvTag" id="tvTag"><i></i><span id="tvState">NOW PLAYING</span></div>
+        <div class="tvTag" id="tvTag"><i></i><span id="tvState">BIRTHDAY REEL</span></div>
         <div class="tvNo" id="tvNo"></div>
         <div class="tvCap" id="tvCap"></div>
         <div class="tvGlare"></div>
@@ -987,7 +989,7 @@ function startMemories(){const s=$('#tvScreen');s.classList.remove('boot');void 
   setTimeout(()=>$('#toNumbers').classList.remove('hide'),7000)}
 $('#tvNext').onclick=()=>{showSlide(tvI+1);clearInterval(tvTimer);tvTimer=setInterval(tvTick,4300)};
 $('#tvPrev').onclick=()=>{showSlide(tvI-1);clearInterval(tvTimer);tvTimer=setInterval(tvTick,4300)};
-$('#tvPlay').onclick=()=>{tvPaused=!tvPaused;const play=$('#tvPlay');play.textContent=tvPaused?'▶':'❚❚';play.setAttribute('aria-label',tvPaused?'Play':'Pause');$('#tvState').textContent=tvPaused?'PAUSED':'NOW PLAYING';$('#tvTag').classList.toggle('paused',tvPaused)};
+$('#tvPlay').onclick=()=>{tvPaused=!tvPaused;const play=$('#tvPlay');play.textContent=tvPaused?'▶':'❚❚';play.setAttribute('aria-label',tvPaused?'Play':'Pause');$('#tvState').textContent=tvPaused?'PAUSED':'BIRTHDAY REEL';$('#tvTag').classList.toggle('paused',tvPaused)};
 $('#tvScreen').onclick=()=>{if(tvI>=0)openLB(tvI)};
 let lbI=0;
 function openLB(i){lbI=i;lbOpen=true;const im=$('#lbImg');setImg(im,i);$('#lbCap').textContent=MEMS[i][1];$('#lightbox').classList.remove('hidden');const inner=$('.lbInner');inner.style.setProperty('--frame',FRAME_COLORS[i%FRAME_COLORS.length]);inner.style.animation='none';void inner.offsetWidth;inner.style.animation=''}
