@@ -301,11 +301,11 @@ textarea.bad{border-color:#ff4d6d;animation:shk .4s}
 .env.open .seal{opacity:0}
 .env.away{transform:translateY(80px) scale(.7);opacity:0}
 @keyframes floaty{0%,100%{transform:translateY(0) rotate(-2deg)}50%{transform:translateY(-12px) rotate(2deg)}}
-.card{flex:none;width:min(92vw,440px);max-height:64vh;overflow:auto;background:repeating-linear-gradient(#fffaf3 0 26px,#f3e2ea 26px 27px);background-attachment:local;color:#4a2c3f;border-radius:18px;padding:26px 24px;text-align:left;box-shadow:0 25px 60px rgba(0,0,0,.5);font-size:15.5px;line-height:27px;animation:pop .7s cubic-bezier(.2,1.5,.4,1);margin-bottom:22px;user-select:text}
-.card h3{font-family:'Pacifico',cursive;font-weight:400;color:#d6337f;font-size:26px;margin-bottom:8px;line-height:1.4}
-.card p{margin-bottom:10px}
+.card{flex:none;width:min(94vw,460px);max-height:72vh;overflow:auto;background:repeating-linear-gradient(#fffaf3 0 26px,#f3e2ea 26px 27px);background-attachment:local;color:#4a2c3f;border-radius:18px;padding:28px 24px 30px;text-align:left;box-shadow:0 25px 60px rgba(0,0,0,.5);font-size:16px;line-height:28px;animation:pop .7s cubic-bezier(.2,1.5,.4,1);margin-bottom:22px;user-select:text}
+.card h3{font-family:'Pacifico',cursive;font-weight:400;color:#d6337f;font-size:28px;margin-bottom:10px;line-height:1.4}
+.card p{margin-bottom:12px}
 .card .hl{font-weight:600;color:#b8286a}
-.card .sign{text-align:right;font-family:'Pacifico',cursive;color:#d6337f;font-size:20px}
+.card .sign{text-align:right;font-family:'Pacifico',cursive;color:#d6337f;font-size:22px;margin-top:8px}
 .cursor::after{content:'|';margin-left:1px;animation:blink .8s infinite;color:#d6337f}
 @keyframes blink{50%{opacity:0}}
 @keyframes pop{from{opacity:0;transform:scale(.6) translateY(40px)}to{opacity:1;transform:none}}
@@ -926,15 +926,23 @@ function regrowFlower(hg,done){const bloom=hg.querySelector('.bloom'),stem=hg._s
 }
 $('#toLetter').onclick=()=>{if(!bqDone)return;document.querySelectorAll('.fireworkEffect').forEach(el=>el.remove());flowerBusy=false;$('#bouquet').classList.remove('flowerBusy','fireworks');show('letter')};
 
-/* LETTER (from Viraj) */
+/* LETTER (from Viraj only) */
 const LINES=[
-  ['h3','Hey Mctominay! 🎉👋'],
-  ['p','Happy birthday!! 🎂🥳'],
-  ['p','Viraj, Nancy, Alaric, Fluffy and Kashie got together and made this for you. A cake, a sky full of wishes, and a little secret at the end 🎁'],
-  ['p','Thanks for being part of the gang 🎮 You make every hangout louder, funnier, and a lot harder to leave 😂'],
-  ['p','Blow out the candles, take the biggest slice, and make a wish that is actually huge. This year is yours ✨'],
-  ['p','We hope it brings you wins, laughs, good games, and every surprise you have been waiting for 🌷💖'],
-  ['p','Happy birthday, Mctominay. We are really glad you are here 🫶'],
+  ['h3','Hey Mctominay 👀'],
+  ['p','Happy birthday!! 🎂🥳🎉'],
+  ['p','I made this whole little world for you. The cake, the lanterns, the flowers, the secret at the end… all of it is from me, Viraj 🎁✨'],
+  ['p','I wanted you to feel special today. Not a quick “hbd” in chat — something you can open, click through, and actually smile at 🥹'],
+  ['p','Thank you for being my friend 🎮💜 You make hangouts funnier, games better, and quiet days a lot less quiet. I am really glad we are friends.'],
+  ['p','So here are my wishes for you, Mctominay:'],
+  ['p','I wish you a year packed with wins, laughs, and good vibes 🌟'],
+  ['p','I wish you cake bigger than your appetite 🍰 and snacks that never run out 🍿'],
+  ['p','I wish you cozy nights, wild game sessions 🎮, and that soft feeling when everything just feels right 🌙'],
+  ['p','I wish you people who show up for you the way you show up for them 🫶'],
+  ['p','I wish you confidence on the hard days, and pure joy on the easy ones ☀️'],
+  ['p','I wish every surprise this year is a good one — including this letter 💌'],
+  ['p','Blow out the candles, take the biggest slice, and make a wish that is actually huge. This year is yours, for real ✨'],
+  ['p','Happy birthday, Mctominay. I hope this makes you smile. You deserve a day as bright as you are 💖'],
+  ['p','With love,','sign'],
   ['p','— Viraj','sign']
 ];
 let envOpen=false;const card=$('#card');
