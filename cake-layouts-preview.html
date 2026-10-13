@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Cake page layouts â€” pick one</title>
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:wght@500;700;800&display=swap" rel="stylesheet"/>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{--bg:#0b0620;--pink:#ff5fa2;--gold:#ffd166;--purple:#9b5de5}
+body{font-family:'Poppins',sans-serif;background:linear-gradient(180deg,#12082a,#070414 40%,#12082a);color:#fff;min-height:100vh;padding:24px 16px 80px}
+h1{font-family:'Pacifico',cursive;font-weight:400;font-size:clamp(28px,6vw,42px);text-align:center;margin-bottom:6px;background:linear-gradient(90deg,#ffd166,#ff5fa2,#c9b0ff);-webkit-background-clip:text;background-clip:text;color:transparent}
+.lead{text-align:center;opacity:.75;font-size:14px;margin-bottom:28px;max-width:560px;margin-left:auto;margin-right:auto;line-height:1.5}
+.grid{display:grid;gap:28px;max-width:980px;margin:0 auto}
+.card{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);border-radius:20px;overflow:hidden;box-shadow:0 20px 50px rgba(0,0,0,.35)}
+.card head,.card .bar{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:14px 18px;border-bottom:1px solid rgba(255,255,255,.08);background:rgba(0,0,0,.25)}
+.card .bar b{font-size:15px}
+.card .bar span{font-size:12px;opacity:.65}
+.pick{border:none;border-radius:999px;padding:8px 14px;font:700 12px 'Poppins',sans-serif;cursor:pointer;background:linear-gradient(135deg,var(--pink),var(--purple));color:#fff}
+.pick:hover{filter:brightness(1.08)}
+.stage{position:relative;height:420px;background:radial-gradient(ellipse at 50% 30%,rgba(155,93,229,.28),transparent 55%),radial-gradient(ellipse at 50% 100%,rgba(255,95,162,.12),transparent 45%),#0a0518;overflow:hidden}
+.stage::before{content:'';position:absolute;inset:0;background-image:radial-gradient(1.5px 1.5px at 20% 30%,#fff8,transparent),radial-gradient(1px 1px at 70% 20%,#fff6,transparent),radial-gradient(1.5px 1.5px at 40% 70%,#fff5,transparent),radial-gradient(1px 1px at 85% 60%,#fff7,transparent),radial-gradient(1px 1px at 10% 80%,#fff4,transparent);pointer-events:none}
+.stage.picked{outline:3px solid var(--gold);outline-offset:-3px}
+
+/* shared character + cake bits */
+.av{position:absolute;display:flex;flex-direction:column;align-items:center;filter:drop-shadow(0 10px 14px rgba(0,0,0,.55));transition:transform .25s}
+.av img{display:block;height:100%;width:auto;object-fit:contain;object-position:bottom center}
+.av .tag{font-size:11px;font-weight:800;text-shadow:0 2px 6px #000;margin-bottom:4px;white-space:nowrap}
+.av.king .tag{color:var(--gold)}
+.cake{position:absolute;left:50%;transform:translateX(-50%);bottom:18%;width:120px;z-index:5}
+.cake .body{position:relative;width:100%}
+.cake .plate{height:10px;border-radius:50%;background:#ddd;box-shadow:0 6px 0 #aaa;margin-top:-4px}
+.cake .t1{height:36px;border-radius:8px 8px 4px 4px;background:linear-gradient(#fff,#ffd6ea);border:2px solid #f5b8d4;display:grid;place-items:center;font-family:'Pacifico',cursive;color:#9b2c62;font-size:13px}
+.cake .t2{height:28px;width:78%;margin:0 auto;border-radius:8px 8px 2px 2px;background:linear-gradient(#ffe08a,#ffb347);border:2px solid #e09a2e}
+.cake .t3{height:22px;width:55%;margin:0 auto;border-radius:8px 8px 2px 2px;background:linear-gradient(#c9b0ff,#9b5de5);border:2px solid #7a3fc0}
+.cake .candles{display:flex;justify-content:center;gap:8px;margin-bottom:2px}
+.cake .candle{width:6px;height:18px;background:#fff3c4;border-radius:2px;position:relative}
+.cake .candle::after{content:'';position:absolute;top:-8px;left:50%;width:8px;height:10px;margin-left:-4px;border-radius:50% 50% 40% 40%;background:radial-gradient(#fff,#ffd166 40%,#ff7a00);animation:flick .2s infinite alternate}
+@keyframes flick{to{transform:scaleY(.85) translateY(1px)}}
+.note{padding:12px 18px 16px;font-size:12.5px;line-height:1.45;opacity:.8;border-top:1px solid rgba(255,255,255,.06)}
+
+/* ========== LAYOUT 1: classic two rows (like live site) ========== */
+#l1 .row{position:absolute;left:0;right:0;display:flex;justify-content:center;align-items:flex-end;gap:6px;z-index:4}
+#l1 .top{top:8%;height:130px}
+#l1 .bot{bottom:6%;height:150px}
+#l1 .top .av,#l1 .bot .av{position:relative;height:100%}
+#l1 .bot .av.king{height:118%}
+#l1 .cake{bottom:36%}
+
+/* ========== LAYOUT 2: arc / semicircle ========== */
+#l2 .av{height:120px;bottom:12%}
+#l2 .av[data-n="Viraj"]{left:4%;bottom:28%;height:110px;transform:rotate(-8deg)}
+#l2 .av[data-n="Nancy"]{left:16%;bottom:42%;height:118px;transform:rotate(-4deg)}
+#l2 .av[data-n="Alaric"]{left:30%;bottom:50%;height:118px}
+#l2 .av[data-n="Fluffy"]{right:30%;bottom:50%;height:118px;left:auto}
+#l2 .av[data-n="Kashie"]{right:16%;bottom:42%;height:118px;left:auto;transform:rotate(4deg)}
+#l2 .av[data-n="Mctominay"]{right:4%;bottom:28%;height:128px;left:auto;transform:rotate(8deg)}
+#l2 .cake{bottom:10%;width:130px;z-index:6}
+
+/* ========== LAYOUT 3: huddle cluster ========== */
+#l3 .av{height:115px}
+#l3 .av[data-n="Viraj"]{left:18%;bottom:38%;z-index:3;height:105px}
+#l3 .av[data-n="Nancy"]{left:30%;bottom:30%;z-index:4}
+#l3 .av[data-n="Alaric"]{left:22%;bottom:14%;z-index:5;height:120px}
+#l3 .av[data-n="Fluffy"]{right:22%;bottom:14%;z-index:5;height:120px;left:auto}
+#l3 .av[data-n="Kashie"]{right:30%;bottom:30%;z-index:4;left:auto}
+#l3 .av[data-n="Mctominay"]{right:18%;bottom:38%;z-index:3;height:125px;left:auto}
+#l3 .cake{bottom:22%;width:110px;z-index:6}
+
+/* ========== LAYOUT 4: spotlight birthday kid ========== */
+#l4 .av[data-n="Mctominay"]{left:50%;bottom:8%;height:200px;transform:translateX(-50%);z-index:6}
+#l4 .av[data-n="Viraj"]{left:6%;bottom:18%;height:115px;z-index:3}
+#l4 .av[data-n="Nancy"]{left:20%;bottom:28%;height:120px;z-index:3}
+#l4 .av[data-n="Alaric"]{left:8%;bottom:48%;height:110px;z-index:2}
+#l4 .av[data-n="Fluffy"]{right:8%;bottom:48%;height:110px;left:auto;z-index:2}
+#l4 .av[data-n="Kashie"]{right:20%;bottom:28%;height:120px;left:auto;z-index:3}
+#l4 .cake{left:72%;bottom:12%;width:100px;transform:none;z-index:5}
+
+/* ========== LAYOUT 5: layered depth (behind / front of cake) ========== */
+#l5 .av{height:118px}
+#l5 .av.back{z-index:2;opacity:.92;filter:drop-shadow(0 8px 10px rgba(0,0,0,.4)) brightness(.92)}
+#l5 .av.front{z-index:6}
+#l5 .av[data-n="Viraj"]{left:10%;bottom:40%}
+#l5 .av[data-n="Nancy"]{left:28%;bottom:46%}
+#l5 .av[data-n="Alaric"]{right:28%;bottom:46%;left:auto}
+#l5 .av[data-n="Fluffy"]{right:10%;bottom:40%;left:auto}
+#l5 .av[data-n="Kashie"]{left:22%;bottom:8%;height:130px}
+#l5 .av[data-n="Mctominay"]{right:22%;bottom:6%;height:145px;left:auto}
+#l5 .cake{bottom:24%;width:125px;z-index:4}
+
+/* ========== LAYOUT 6: single squad row over cake ========== */
+#l6 .row{position:absolute;left:2%;right:2%;bottom:34%;display:flex;justify-content:center;align-items:flex-end;gap:2px;z-index:5;height:150px}
+#l6 .row .av{position:relative;height:100%;flex:1;max-width:110px}
+#l6 .row .av.king{height:115%;max-width:130px}
+#l6 .cake{bottom:6%;width:140px;z-index:3}
+
+@media(max-width:640px){
+  .stage{height:360px}
+  #l1 .top{height:100px}#l1 .bot{height:120px}
+  #l6 .row{height:120px}
+}
+</style>
+</head>
+<body>
+  <h1>Cake page layouts</h1>
+  <p class="lead">Real Roblox pics from your Drive. Six ways the party/cake screen can look. Tap <b>Pick this</b> on your favorite â€” tell me the number and Iâ€™ll wire it into the live site.</p>
+
+  <div class="grid" id="grid"></div>
+
+<script>
+const CHAR = [
+  {n:'Viraj', src:'characters/roblox/Viraj.jpg'},
+  {n:'Nancy', src:'characters/roblox/Nancy.jpg'},
+  {n:'Alaric', src:'characters/roblox/Alaric.jpg'},
+  {n:'Fluffy', src:'characters/roblox/Fluffy.jpg'},
+  {n:'Mctominay', src:'characters/roblox/Mctominay.jpg', king:1},
+  {n:'Kashie', src:'characters/roblox/Kashie.jpg'},
+];
+
+const LAYOUTS = [
+  {id:'l1', title:'1 Â· Classic two rows', blurb:'Closest to the live site: 3 friends up top, cake middle, birthday kid big on the bottom row.'},
+  {id:'l2', title:'2 Â· Arc around cake', blurb:'Everyone curves around the cake like a group photo. Cake sits front and center.'},
+  {id:'l3', title:'3 Â· Tight huddle', blurb:'Cozy cluster â€” friends lean in close around the cake. Feels like a surprise pile-on.'},
+  {id:'l4', title:'4 Â· Spotlight McTominay', blurb:'Birthday kid huge in the middle, friends smaller on the sides, cake as a side prop.'},
+  {id:'l5', title:'5 Â· Layered depth', blurb:'Some friends behind the cake, two in front. More depth / â€œhand momentâ€ framing.'},
+  {id:'l6', title:'6 Â· Squad row + cake', blurb:'One clean row of everyone above a big cake. Simple, readable on phones.'},
+];
+
+function cakeHTML(){
+  return `<div class="cake"><div class="body">
+    <div class="candles"><i class="candle"></i><i class="candle"></i><i class="candle"></i><i class="candle"></i></div>
+    <div class="t3"></div><div class="t2"></div><div class="t1">Mcto</div><div class="plate"></div>
+  </div></div>`;
+}
+function av(c, extra=''){
+  return `<div class="av${c.king?' king':''}${extra?' '+extra:''}" data-n="${c.n}"><div class="tag">${c.king?c.n+' ðŸŽ‚':c.n}</div><img src="${c.src}" alt="${c.n}"/></div>`;
+}
+
+const grid = document.getElementById('grid');
+LAYOUTS.forEach((L, idx) => {
+  const card = document.createElement('article');
+  card.className = 'card';
+  let stageInner = '';
+  if (L.id === 'l1') {
+    const top = CHAR.filter(c => ['Viraj','Nancy','Alaric'].includes(c.n));
+    const bot = CHAR.filter(c => ['Fluffy','Mctominay','Kashie'].includes(c.n));
+    stageInner = `<div class="row top">${top.map(c=>av(c)).join('')}</div>${cakeHTML()}<div class="row bot">${bot.map(c=>av(c)).join('')}</div>`;
+  } else if (L.id === 'l6') {
+    const order = ['Viraj','Nancy','Alaric','Mctominay','Fluffy','Kashie'].map(n => CHAR.find(c=>c.n===n));
+    stageInner = `<div class="row">${order.map(c=>av(c)).join('')}</div>${cakeHTML()}`;
+  } else if (L.id === 'l5') {
+    stageInner = CHAR.map(c => {
+      const back = ['Viraj','Nancy','Alaric','Fluffy'].includes(c.n);
+      return av(c, back ? 'back' : 'front');
+    }).join('') + cakeHTML();
+  } else {
+    stageInner = CHAR.map(c => av(c)).join('') + cakeHTML();
+  }
+  card.innerHTML = `
+    <div class="bar"><div><b>${L.title}</b><br/><span>${L.blurb}</span></div>
+      <button class="pick" data-id="${idx+1}">Pick this</button></div>
+    <div class="stage" id="${L.id}">${stageInner}</div>
+    <p class="note">Preview only â€” backgrounds on the Roblox exports can be cleaned for the final site.</p>`;
+  grid.appendChild(card);
+});
+
+grid.addEventListener('click', e => {
+  const btn = e.target.closest('.pick');
+  if (!btn) return;
+  document.querySelectorAll('.stage').forEach(s => s.classList.remove('picked'));
+  document.getElementById('l' + btn.dataset.id)?.classList.add('picked');
+  btn.textContent = 'Selected âœ“';
+  grid.querySelectorAll('.pick').forEach(b => { if (b !== btn) b.textContent = 'Pick this'; });
+  alert('Layout ' + btn.dataset.id + ' selected â€” tell Viraj/me this number in chat and Iâ€™ll put it on the live cake page.');
+});
+</script>
+</body>
+</html>
