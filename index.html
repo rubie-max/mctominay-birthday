@@ -1189,11 +1189,12 @@ $('#finalBtn').onclick=async()=>{show('final');stopBalloons(true);
   await skyWrite(textPts('BIRTHDAY',cy),cy);
   await skyWrite(textPts(NAME.toUpperCase(),cy),cy);
   $('#finalContent').style.opacity=1;$('#nm').innerHTML=Array.from(NAME).map((c,i)=>`<span style="animation-delay:${.4+i*.12}s,${1.3+i*.12}s">${c}</span>`).join('');chime([72,76,79,84]);rain(160);startBalloons();
-  const fs=$('#fSquad');ALL.forEach((n,i)=>{const a=makeAv(n,n===NAME?{big:1,tag:'🎂'}:{});fs.appendChild(a);setTimeout(()=>a.classList.add('in'),1200+i*180)});
+  const fs=$('#fSquad');ALL.forEach((n,i)=>{const a=makeAv(n,n===NAME?{big:1,tag:'🎂'}:{});fs.appendChild(a);setTimeout(()=>{a.classList.add('in','cheer');jumpEl(a)},1200+i*180)});
   const FS=n=>fs.querySelector(`.av[data-n="${n}"]`);
   [['Viraj',`Happy birthday, ${NAME}! 🎉`],['Nancy','Best year ever! 🥳'],['Alaric',"You're the best! ⭐"],['Fluffy','Love this party! 💖'],['Kashie','More cake please 🍰'],['Mctominay','Thank you guys!! 🥹']].forEach(([n,t],i)=>sayEl(FS(n),t,2400+i*1500,1600));
   setTimeout(()=>$('#finalSub').classList.add('in'),2600);
   setTimeout(()=>$('#replay').classList.remove('hide'),4000);
+  setInterval(()=>{const a=pick([...fs.children]);if(!a)return;a.classList.toggle('cheer');a.classList.add('wave');jumpEl(a);setTimeout(()=>a.classList.remove('wave'),1400)},900);
   fire();setInterval(()=>{fire();if(Math.random()<.4)setTimeout(fire,250)},900)};
 $('#replay').onclick=()=>location.reload();
 </script>
