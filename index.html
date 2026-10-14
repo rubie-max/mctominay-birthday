@@ -969,13 +969,6 @@ const scene=body=>'data:image/svg+xml,'+encodeURIComponent(`<svg xmlns="http://w
 const dots=(n,seed,w,h,c,r=1)=>{const rr=mkRnd(seed);let s='';for(let i=0;i<n;i++)s+=`<circle cx="${(rr()*w).toFixed(0)}" cy="${(rr()*h).toFixed(0)}" r="${(r*(.5+rr())).toFixed(1)}" fill="${c}"/>`;return s};
 const confettiBits=seed=>{const rr=mkRnd(seed),c=['#ffd166','#ff5fa2','#9b5de5','#00bbf9','#00f5d4'];let s='';for(let i=0;i<40;i++)s+=`<rect x="${(rr()*320).toFixed(0)}" y="${(rr()*120).toFixed(0)}" width="6" height="3" rx="1" fill="${c[i%5]}" transform="rotate(${(rr()*180).toFixed(0)} ${(rr()*320).toFixed(0)} ${(rr()*120).toFixed(0)})"/>`;return s};
 const MEMS=[
-  ['memories/scene-gaming.jpg','Late-night gaming 🎮'],
-  ['memories/scene-beach.jpg','Beach day with the squad 🏖️'],
-  ['memories/scene-campfire.jpg','Campfire stories 🔥'],
-  ['memories/scene-obby.jpg','That obby was impossible 😂'],
-  ['memories/scene-snow.jpg','Snowball fight! ❄️'],
-  ['memories/scene-rooftop.jpg','Rooftop sunset 🌇'],
-  ['memories/scene-allofus.jpg','All of us together 💖'],
   ['memories/01-kawaii-wall.jpg','Kawaii happy birthday wall'],
   ['memories/02-teddy-cake.jpg','Teddy bears and the candle cake'],
   ['memories/03-pink-party.jpg','Cake at the pink party'],
@@ -983,16 +976,10 @@ const MEMS=[
   ['memories/05-squad-blocks.jpg','The whole squad on the blocks'],
   ['memories/06-sunset-deck.jpg','Sunset on the deck'],
   ['memories/07-railing-sunset.jpg','Watching the sun go down'],
-  ['memories/08-up-the-hill.jpg','Up the hill together']
+  ['memories/08-up-the-hill.jpg','Up the hill together'],
+  [scene(`<rect width="320" height="200" fill="#3b1f5c"/><ellipse cx="160" cy="170" rx="170" ry="40" fill="#ff5fa2" opacity=".25"/>${confettiBits(21)}<rect y="176" width="320" height="24" fill="#2a1545"/><text x="160" y="42" text-anchor="middle" font-family="Poppins,sans-serif" font-size="22" font-weight="800" fill="#fff">The End</text>${['Nancy','Viraj','Kashie','Mctominay','Alaric','Fluffy'].map((n,i)=>charAt(n,35+i*50,190,n==='Mctominay'?104:96)).join('')}`),'The End 💖']
 ];
 const REACT=[
-  ['Alaric','You were SO bad at that 😂'],
-  ['Nancy','I still have sand everywhere 🏖️'],
-  ['Kashie','Alaric told the scariest story 👻'],
-  ['Fluffy','Mctominay fell like 10 times 🔥'],
-  ['Mctominay','Viraj started it!! ❄️'],
-  ['Kashie','Best view ever 🌇'],
-  ['Viraj','Best squad 💖'],
   ['Fluffy','The bear wall is so cute'],
   ['Nancy','Candles are lit'],
   ['Kashie','Look at that cake'],
@@ -1000,9 +987,10 @@ const REACT=[
   ['Mctominay','All of us together'],
   ['Nancy','Look at that sunset'],
   ['Alaric','The ocean is glowing'],
-  ['Mctominay',"Don't drop me"]
+  ['Mctominay',"Don't drop me"],
+  ['Viraj','Happy birthday, McTominay']
 ];
-const FRAME_COLORS=['#b7caff','#a9e6ef','#ffc1a8','#ffb2c2','#b7e6ff','#ffcfaa','#ffd6e8','#ffd6e8','#ffcfaa','#ffb2c2','#ffd9a8','#b7caff','#ffb36b','#ffd98a','#ff8ec4'];
+const FRAME_COLORS=['#ffd6e8','#ffcfaa','#ffb2c2','#ffd9a8','#b7caff','#ffb36b','#ffd98a','#ff8ec4','#ffd6e8'];
 
 /* back views for the couch */
 const BK_BODY=(c,ex='')=>`<path d="M28 236Q28 156 100 150Q172 156 172 236Z" fill="${c}"/>${ex}`;
