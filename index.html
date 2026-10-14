@@ -229,9 +229,9 @@ body.lit .bulb{background:var(--c);box-shadow:0 0 10px 3px var(--c),0 0 26px 6px
 .tvScreen{position:relative;width:100%;aspect-ratio:16/10;border-radius:6px;overflow:hidden;background:#05040a;cursor:pointer}
 .tvScreen.boot{animation:tvOn 1s ease-out}
 @keyframes tvOn{0%{transform:scale(.6,.01);filter:brightness(4)}45%{transform:scale(1,.02);filter:brightness(3)}100%{transform:none;filter:none}}
-.tvImg{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;opacity:0;transition:opacity .9s}
+.tvImg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;opacity:0;transition:opacity .9s}
 .tvImg.on{opacity:1;animation:kb 5s ease-out forwards}
-@keyframes kb{from{transform:scale(1.035)}to{transform:scale(1)}}
+@keyframes kb{from{transform:scale(1.02)}to{transform:scale(1)}}
 .tvFrame{position:absolute;inset:6px;z-index:2;border:2px solid var(--frame,#ffd6e8);border-radius:5px;box-shadow:inset 0 0 25px rgba(0,0,0,.2),0 0 12px color-mix(in srgb,var(--frame,#ffd6e8) 55%,transparent);pointer-events:none;animation:framePulse 5s ease-in-out infinite alternate}
 .tvFrame::before{content:'';position:absolute;inset:0;border:1px solid rgba(255,255,255,.4);border-radius:3px}
 .tvFrame::after{content:'';position:absolute;inset:0;background:linear-gradient(110deg,transparent 10%,rgba(255,255,255,.11) 35%,transparent 58%);opacity:.5;animation:filmShine 5.5s ease-in-out infinite}
@@ -262,7 +262,7 @@ body.lit .bulb{background:var(--c);box-shadow:0 0 10px 3px var(--c),0 0 26px 6px
 .lbInner{position:relative;box-sizing:border-box;background:#fffaf1;padding:16px 16px 28px;border:5px solid var(--frame,#ffd6e8);border-radius:8px;max-width:min(94vw,960px);animation:pop .5s cubic-bezier(.2,1.5,.4,1);box-shadow:0 25px 60px rgba(0,0,0,.6),inset 0 0 0 4px #fff}
 .lbInner::before{content:'';position:absolute;left:50%;top:-14px;width:86px;height:27px;transform:translateX(-50%) rotate(-5deg);background:rgba(255,236,193,.8);box-shadow:0 2px 6px rgba(0,0,0,.12);clip-path:polygon(3% 0,100% 5%,96% 100%,0 94%)}
 .lbInner::after{content:'✦';position:absolute;right:12px;bottom:4px;color:var(--frame,#ffd6e8);font-size:24px}
-.lbInner img{display:block;max-width:100%;max-height:62vh;object-fit:contain;border:4px solid #fff;box-sizing:border-box;box-shadow:0 4px 15px rgba(44,20,38,.18)}
+.lbInner img{display:block;width:100%;max-height:62vh;object-fit:contain;object-position:center;border:4px solid #fff;box-sizing:border-box;box-shadow:0 4px 15px rgba(44,20,38,.18)}
 .lbInner p{color:#4a2c3f;font:700 clamp(22px,5.5vw,30px) 'Caveat',cursive;margin:10px 20px 0;text-align:center}
 .lbN,.lbX{position:fixed;border:none;border-radius:50%;background:rgba(255,255,255,.16);color:#fff;cursor:pointer;z-index:71}
 .lbN{top:50%;transform:translateY(-50%);width:44px;height:44px;font-size:26px}
