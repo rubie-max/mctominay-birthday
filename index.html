@@ -723,7 +723,7 @@ const CHARS={
     over:'<text class="spk" x="0" y="80" font-size="22" fill="#ffe27a" stroke="none">✦</text><text class="spk" x="178" y="60" font-size="16" fill="#ffe27a" stroke="none" style="animation-delay:-1s">✦</text>'
   }
 };
-function avatarSVG(c){return `<svg viewBox="-10 -34 220 370" class="avsvg"><g class="body" stroke="#18181c" stroke-width="2" stroke-linejoin="round"><g class="hb">${c.hb||''}</g><g class="legs">${c.legs}</g><g class="armL">${c.armL}</g><g class="armR">${c.armR}</g><g class="torso">${c.torso}</g><g class="head">${c.face}${c.hf||''}${c.hat||''}</g>${c.over||''}</g></svg>`}
+function avatarSVG(c){return `<svg viewBox="-10 -34 220 370" class="avsvg"><g class="body" stroke="#18181c" stroke-width="2" stroke-linejoin="round"><g class="hb">${c.hb||''}</g><g class="legs">${c.legs}</g><g class="torso">${c.torso}</g><g class="armL">${c.armL}</g><g class="armR">${c.armR}</g><g class="head">${c.face}${c.hf||''}${c.hat||''}</g>${c.over||''}</g></svg>`}
 
 /* x = % across the room, y = height in "avatar heights", sc = depth scale, z = layering */
 const POS={
