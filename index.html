@@ -150,8 +150,8 @@ body.lit .bulb{background:var(--c);box-shadow:0 0 10px 3px var(--c),0 0 26px 6px
 .av.clap .armL{animation:clapL .24s ease-in-out infinite alternate}
 .av.clap .armR{animation:clapR .24s ease-in-out infinite alternate}
 .av.clap .avsvg{animation:clapPop .24s ease-in-out infinite alternate}
-@keyframes clapL{from{transform:rotate(46deg)}to{transform:rotate(112deg)}}
-@keyframes clapR{from{transform:rotate(-46deg)}to{transform:rotate(-112deg)}}
+@keyframes clapL{from{transform:rotate(-52deg)}to{transform:rotate(-98deg)}}
+@keyframes clapR{from{transform:rotate(52deg)}to{transform:rotate(98deg)}}
 @keyframes clapPop{from{transform:translateY(0)}to{transform:translateY(-5px)}}
 .av.leanR .avsvg{animation:leanR 1s ease-in-out infinite alternate}
 .av.leanL .avsvg{animation:leanL 1s ease-in-out infinite alternate}
@@ -159,18 +159,18 @@ body.lit .bulb{background:var(--c);box-shadow:0 0 10px 3px var(--c),0 0 26px 6px
 @keyframes leanL{from{transform:rotate(0)}to{transform:rotate(-8deg) translateY(5px)}}
 .av.blow .avsvg{animation:blowLean 1.45s ease-in-out 1 forwards}
 @keyframes blowLean{0%{transform:translate(0,0) rotate(0)}40%{transform:translate(-12px,8px) rotate(-11deg)}62%{transform:translate(-16px,11px) rotate(-13deg) scale(1.03)}100%{transform:translate(-6px,4px) rotate(-5deg)}}
-.av.blow .armL{transform:rotate(82deg)}
+.av.blow .armL{transform:rotate(-128deg)}
 .av.blow .armR{animation:blowArm .2s ease-in-out 7 alternate}
-@keyframes blowArm{from{transform:rotate(-96deg)}to{transform:rotate(-128deg)}}
+@keyframes blowArm{from{transform:rotate(108deg)}to{transform:rotate(148deg)}}
 .av.blow .mouth{animation:blowMouth .16s ease-in-out 8 alternate;transform-box:fill-box;transform-origin:50% 50%}
 @keyframes blowMouth{from{transform:scale(.65,.5)}to{transform:scale(1.4,.32)}}
 .av.blow .head{animation:puff .18s ease-in-out 7 alternate;transform-box:fill-box;transform-origin:50% 70%}
 @keyframes puff{from{transform:scale(1)}to{transform:scale(1.045,1.02)}}
 .av.slice .avsvg{animation:sliceBody 1.05s ease-in-out 1}
 @keyframes sliceBody{0%{transform:translateY(0) rotate(0)}30%{transform:translateY(-12px) rotate(-5deg)}64%{transform:translateY(8px) rotate(7deg)}100%{transform:translateY(0)}}
-.av.slice .armR{animation:sliceArm 1.05s ease-in-out 1}
-@keyframes sliceArm{0%{transform:rotate(0)}30%{transform:rotate(-162deg)}64%{transform:rotate(22deg)}100%{transform:rotate(0)}}
-.av.slice .armL{transform:rotate(24deg)}
+.av.slice .armL{animation:sliceArm 1.05s ease-in-out 1}
+@keyframes sliceArm{0%{transform:rotate(0)}30%{transform:rotate(-168deg)}64%{transform:rotate(-12deg)}100%{transform:rotate(0)}}
+.av.slice .armR{transform:rotate(16deg)}
 .av.cheer.jump .avsvg{animation:hop .45s ease-out 3}
 .av.hold .armL{transform:rotate(28deg)}
 .av.hold .armR{transform:rotate(-28deg)}
